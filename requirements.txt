@@ -1,0 +1,7 @@
+coc==0.2
+greenlet==1.1.2
+msgpack==1.0.4
+neovim==0.3.1
+pycairo==1.21.0
+PyGObject==3.42.1
+pynvim==0.4.3

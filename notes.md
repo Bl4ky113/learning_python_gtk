@@ -1,7 +1,7 @@
 # Python with GTK 
 
 Start: 13/06/2022
-End: 
+End: 26/07/2022
 
 Sessions:
 - 17/06/2022 12:49 | 14:48
@@ -15,7 +15,12 @@ Sessions:
 - 13/07/2022 14:53 | ...
 - 17/07/2022 18:29 | 20:56
 - 21/07/2022 13:22 | 15:30
-- 22/07/2022 13:03 | 
+- 22/07/2022 13:03 | 20:11
+- 23/07/2022 16:28 | ...
+- 25/07/2022 13:52 | 15:53
+- 26/07/2022 13:56 | 14:29
+
+src: https://python-gtk-3-tutorial.readthedocs.io/en/latest/index.html
  
 ## Install GTK in Python
 
@@ -49,7 +54,7 @@ the easiest way to do it.
 ## Hello World!!!
 
 We're going to import the module gi and we should assure that we are using gtk 3.0
-with the method require_version("Gtk", "3.0"). Then we export Gtk from a submodule 
+with the method require\_version("Gtk", "3.0"). Then we export Gtk from a submodule 
 of gi.
 
 Now we create a Gtk.Window Instance, and define that the quit btn of the window closes the program 
@@ -58,20 +63,20 @@ entirely and safely. We show the window, which has nothing. And start the main g
 ## GTK Basics
 
 GTK is GUI which needs an event driven programming model. It waits until a input or interruption 
-ocurrs, then executes code as a responce. 
+ocurrs, then executes code as a response. 
 
 ### Callbacks
-These responces are called CallBacks, we can make different 
-functions in order to responce to these callbacks by using:
+These responses are called CallBacks, we can make different 
+functions in order to response to these callbacks by using:
 
-handler_id = widget.connect(event, callback, info=None)
+handler\_id = widget.connect(event, callback, info=None)
 
-we can use the handler_id to disconect the callback to the event.
-& if we somehow lost the h_id, we can disconect it by the callback 
+we can use the handler\_id to disconect the callback to the event.
+& if we somehow lost the h\_id, we can disconect it by the callback 
 function name.
 
-widget.disconect(handler_id)
-widget.disconect_by_func(callback)
+widget.disconect(handler\_id)
+widget.disconect\_by\_func(callback)
 
 info arg is just a way to pass any information or context to the callback
 
@@ -85,7 +90,7 @@ them labels to display, some style properties and others.
 
 We can set most of theses properties by giving them when we create the widget instance.
 But if we need to set a property after the creation of the widget, we can use:
-widget.props.property_name = value # for setting and getting the value
+widget.props.property\_name = value # for setting and getting the value
 Avoiding the Setting and Getting functions.
 
 If we want to see which properties does any widget have, we can use the builtin function dir()
@@ -129,7 +134,7 @@ box = GTK.Box()
 Add the box to a window:
 window.add(box)
 Add content to the box by using pack start (left or top) or pack end (right or bottom)
-box.pack_start(widget, expand, fill, padding)
+box.pack\_start(widget, expand, fill, padding)
 Start the window, and the box with the btns will apear. 
 
 ### Grid
@@ -147,7 +152,7 @@ We can add widgets with attach(). It takes:
 - height: span of rows ...
 
 Or we can attach them with another widget, silbling, using
-attach_next_to, it takes:
+attach\_next\_to, it takes:
 - the widget
 - the silbling
 - the side of the silbling where the widget will attach
@@ -170,11 +175,11 @@ It is a replacement or an alternative to TreeViews, which are like tables.
 It's a container which only shows one of its children, generaly another container. We can 
 change the shown children with a StackSwitcher, combining this two, we can recreate a 
 menu navbar. We can customise the transition between the stack children with the method 
-set_transition_type().
+set\_transition\_type().
 We can have multiple Stackwitches assiciated with one Stack.
 
-To add contents to an stack, use method: add_tilted(widget, "name widget", "label to show")
-And we can set a Stack to a StackSwitcher using its method: set_stack(stack_widget)
+To add contents to an stack, use method: add\_tilted(widget, "name widget", "label to show")
+And we can set a Stack to a StackSwitcher using its method: set\_stack(stack\_widget)
 It'll get the added children to the stack and show the labels of each one.
 
 ### Header Bar
@@ -205,31 +210,31 @@ but it can modify, and hide, the page selector.
 ## Labels in GTK
 
 Are the main way to write non-editable text in our apps, we can declare it on the constructor 
-or at any time with .set_text(text) or .set_markup(pango_markups). We can make it selectable to 
-the user by using .set_selectable(). 
+or at any time with .set\_text(text) or .set\_markup(pango\_markups). We can make it selectable to 
+the user by using .set\_selectable(). 
 We can style the text if we use markups, or we can use differents properties and methods to style,
 such as:
-- set_justify(): justify to left, right, center o fill.
-- use_underline: bool, to set it.
-- set_line_wrap(): breaking the text if its widths is bigger than the widget's size. 
-- set_lime_wrap_mode(): A way to wrap the text, by using Pango.WrapModes
-- set_max_width_chars(num): Set the max width, in chars, of the label
+- set\_justify(): justify to left, right, center o fill.
+- use\_underline: bool, to set it.
+- set\_line\_wrap(): breaking the text if its widths is bigger than the widget's size. 
+- set\_lime\_wrap\_mode(): A way to wrap the text, by using Pango.WrapModes
+- set\_max\_width\_chars(num): Set the max width, in chars, of the label
 
 When we use the mackup syntax, we are not using html5 markup, we are using pango markups, which are a 
 series of tags to style the text, generaly pango uses spans with a bunch of properties to style the 
 text, but it counts with the general \<b\>, \<i\>, and others.
 
 Labels also can have a reference to press a key and do an action, called mnemonic. They 
-show as a underlined, generaly, a letter to activate a widget. They can be set set_text__with_mnemonic,
-we also have to pass the content of the label with it, just like set_text. 
+show as a underlined, generaly, a letter to activate a widget. They can be set set\_text\_\_with\_mnemonic,
+we also have to pass the content of the label with it, just like set\_text. 
 These widgets generaly get assiciated with the widget which contains the label text, in case 
-contary, we hace to use set_mnemonic_widget, and pass the widget to associate them with the label.
+contary, we hace to use set\_mnemonic\_widget, and pass the widget to associate them with the label.
 
 ## Entries in GTK
 
 Entries are a way for the users to enter data, using text inputs. This input can be set and get with
-set/get_text(). We can filter the data of the entry with some properties and methods, such as set_max_length()
-or we can make it no/editable with set_editable() or make invisible the content of the entry using set_visibility()
+set/get\_text(). We can filter the data of the entry with some properties and methods, such as set\_max\_length()
+or we can make it no/editable with set\_editable() or make invisible the content of the entry using set\_visibility()
 
 Entries can also display progress such as a ProgressBar, using and seting the fractions of the progres, the steps of 
 each pulse, and see the progress. It can be used to do different things other than just a progres bar
@@ -249,8 +254,8 @@ attach the button to an action. It can contain any other widget, generally icons
 ### Toggle Btn 
 
 A Btn which looks like the last and normal one, but it remains presed or toggled.
-We can se the status of the btn, as a bool, using get_active(). Or change the status
-with set_active(). Whenever it's toggled, it sends a toggled signal. So we can 
+We can se the status of the btn, as a bool, using get\_active(). Or change the status
+with set\_active(). Whenever it's toggled, it sends a toggled signal. So we can 
 add a function to it.
 
 The event behaves just like a clicked event.
@@ -263,35 +268,35 @@ displayed as a checkbox.
 ### Radio Btn
 
 It's an inherit from Toggle Btn, but these work in groups, also have a weird way to create themselfs and 
-create groups. We can set their group when we create them or with join_group(radiowidget).
+create groups. We can set their group when we create them or with join\_group(radiowidget).
 
-- We can create them without a label with: new_from_widget(group)
-- With a label with: new_with_label_from_widget(group)
-- With a mnemonic label: new_with_mnemonic(group)
+- We can create them without a label with: new\_from\_widget(group)
+- With a label with: new\_with\_label\_from\_widget(group)
+- With a mnemonic label: new\_with\_mnemonic(group)
 
 Each method takes a group to add the radio btn, it can be a RadioWidget Instance or None, when you want to 
 add it to no group or if it's the first radio btn instance created.
 
-Can be set or check activated with set/get_activate()
+Can be set or check activated with set/get\_activate()
 
 ### Link / HyperLink Btn
 
-It's a btn which behaves like a link to the web. We can set/get the url with set/get_uri().
+It's a btn which behaves like a link to the web. We can set/get the url with set/get\_uri().
 We can create it with only the link or with a label:
 - new(url)
-- new_with_label(url, label)
+- new\_with\_label(url, label)
 
 
 ### Spin Button
 
 It's the best way to make a number input, it has two btns to increment or decrement the value. 
 The main properties of the widget can se seted with Gtk.Adjustment. We can set the value to be an
-int or a float. We can set how many decimals we want to se with set_digits(). 
+int or a float. We can set how many decimals we want to se with set\_digits(). 
 
-The input not only can get number, but strings on default, to avoid it we can use set_numeric() to true.
-We can set an update_policy() so the value only updates if its valid.
+The input not only can get number, but strings on default, to avoid it we can use set\_numeric() to true.
+We can set an update\_policy() so the value only updates if its valid.
 
-We can get/set the data normaly with set/get_value(), but we can also get_value_as_int()
+We can get/set the data normaly with set/get\_value(), but we can also get\_value\_as\_int()
 Also the widget has a value-changed event in order to check or trigger a function.
 
 ### Switch 
@@ -310,10 +315,10 @@ box or anther layout, we can add many more.
 
 Progress bars show us the status of completion of an action. If the program knows 
 how long or much is it gonna take. We can use percentages, uptating the bar with 
-set_fraction(float from 0 to 1). 
+set\_fraction(float from 0 to 1). 
 Or if we dont know how long or much is it gonna take, we can use pulse() to update
 the bar whenever it makes any progress. We can also change the size of these steps with
-set_pulse_step
+set\_pulse\_step
 
 We can also modify the style of the progress bar adding some text and change the direction of 
 the bar in percentage mode. Right to Left.
@@ -348,7 +353,7 @@ you can add data with a column header. When you create a Model you have to speci
 
 We can add data to the models using append. For Lists we just send the data as a parameter, and for 
 trees we can send the data as a parameter, and if we want a child row, we can send it like a iterable. The method will return a 
-treeiter instance where we can get the data appended by using get_iter in our model.
+treeiter instance where we can get the data appended by using get\_iter in our model.
 
 We can access the data of the treemodel by using the treeiter like a list: store[tree iter][column index]
 As this behaves like a list, 2we can use splitters on the columns, and len().
@@ -360,7 +365,7 @@ data in a document db), and the treeiter instance of the row.
 
 We can get the path of a row by making a TreePath Instance and passing the number of the row 
 as a parameter, and using the TreePath instance we can us it to get the treeiter instance of that 
-row with model.get_iter().
+row with model.get\_iter().
 
 These TreePath Instances will look like "0" for lists and "0:12:123" for trees with depth, 
 we can see the depth of the path by using len(path) and we can access the child index by accessing the 
@@ -369,38 +374,38 @@ level of depth like a list path[level].
 ### Tree View
 
 Now that we have the data on the treemodel, we can display it with a TreeView,
-we just add it to the treeview by passing it as a karg model=my_model,
+we just add it to the treeview by passing it as a karg model=my\_model,
 but we have to display it using columns and these must use cell renders. 
 WE can use a render for a toggle, images & icons or text. And we can create our
 own using the CellRender Class using the properties of GObject.Property().
 
-We are going to create a instance of this render and pass it as a argument, cell_render or 2 property if positional,
+We are going to create a instance of this render and pass it as a argument, cell\_render or 2 property if positional,
 to a TreeViewColumn instance. Which can have a title or a header for the column. The columns has more properties 
 but the guide doesnt say which ones. 
-We can add multiple model data to a column we can use pack_start() and add the data with add_atribute()
+We can add multiple model data to a column we can use pack\_start() and add the data with add\_atribute()
 
-Then we can add the column to the tree view using add_column().
+Then we can add the column to the tree view using add\_column().
 
 ### Tree Select 
 
 We can use the selection of an user by making a instance of the method of the treeview.
 With this we can connect the "changed" event. this will return the selected rows, if 
-he multiple option is on, so we can use get_selected/selected_rows().
+he multiple option is on, so we can use get\_selected/selected\_rows().
 
 ### Tree Sorting
 
 We can sort the models on a treeview by setting a column to sort the rows, 
-this is done by passing the index of the column in the view to the method set_sort_column
+this is done by passing the index of the column in the view to the method set\_sort\_column
 of the column. Generaly an 0.
 
-We can create our own sort function and use it with set_sort_funct()
+We can create our own sort function and use it with set\_sort\_funct()
 
 ### Tree Filtering
 
 We can filter the treemodel data by using filters with
-model.filter_new() making a filter instance, and we can add 
-more filters to these ones. And filter it by a filter_function seted with 
-set_visible_func on the filter obj.
+model.filter\_new() making a filter instance, and we can add 
+more filters to these ones. And filter it by a filter\_function seted with 
+set\_visible\_func on the filter obj.
 
 ### Subtract
 
@@ -423,7 +428,7 @@ and many of them have events, these will return the widget, the path of the cell
 
 ### CellR. Text
 
-Display text with its given properties. We can change them with set_property(), one of them 
+Display text with its given properties. We can change them with set\_property(), one of them 
 is editable, when its on true, we can edit the text of the cell. We can an edited event to the 
 render cell if we make it editable. Generally this envent will change the content of the Cell, which 
 doesn't do by default.
@@ -431,7 +436,7 @@ doesn't do by default.
 ### CellR. Toggle
 
 Displays the value of an Checkbox, or radio btn, we can add a toggled event to the cell.
-And we can make the toggle a radio btn by using the set_radio(True) method, but this will not make the 
+And we can make the toggle a radio btn by using the set\_radio(True) method, but this will not make the 
 radio btns act as a group, they will allow more than one radio btn on true.
 
 ### CellR. PixBuf
@@ -457,12 +462,12 @@ Combox are ways to display a list of options for the user to choose from. It's b
 large number of radio btns. 
 
 It uses a datamodel, just like treeview, as values, it can have a bunch of subvalues, such as
-IDs, and others, we can change the entry text with set_entry_text_column(column_id). But we can let 
-the user enter a value by providing an enter by making a entry with new_with_model_and_entry(model_data)
+IDs, and others, we can change the entry text with set\_entry\_text\_column(column\_id). But we can let 
+the user enter a value by providing an enter by making a entry with new\_with\_model\_and\_entry(model\_data)
 
 We can connect the widget to the changed event, although with the enter it'll trigger 
-whenever you change the text. You can set the max width of the text with set_wrap_width(), 
-and add a default value with set_active(row_index), this will trigger the changed event 
+whenever you change the text. You can set the max width of the text with set\_wrap\_width(), 
+and add a default value with set\_active(row\_index), this will trigger the changed event 
 when the program starts or the widget gets shown.
 
 ## IconView
@@ -471,7 +476,207 @@ IconView is a way to diplay pixbuf icons in a grid view, these can support
 drag and drop, multiple selections, and item reordering. It uses a ListStore to 
 store the icons, it requires to atleast have one column with a pixbuf obj.
 
-We can set the multiple selection with set_selection_mode(), just like the TreeViews.
+We can set the multiple selection with set\_selection\_mode(), just like the TreeViews.
 
 And in the model we add another columns, such as names of the icon and others, we can 
-use the set_pixbuf/text_column(column_id).
+use the set\_pixbuf/text\_column(column\_id).
+
+## Mutline Text Editor
+
+TextView is an object that let us see large cuantities of formated text. And also can be used to 
+edit this large text, just like a text editor. It uses a TextBuffer Model for the text, just like 
+the tree view.
+
+### TextView
+
+It desplays a textbuffer info, we can get this buffer with get\_buffer(). 
+The editable mode can be setted with set\_editable(), and we can make visible the 
+text cursor with set\_cursor\_available(). 
+
+We can add justification to the text with set\_justification(GTK.justification). 
+The normal ones for text. And we can make a text wrap of the screen is to small with
+set\_wrap\_mode().
+
+### TextBuffer
+
+The textbuffer is the model for the textview, we can set or get the text with get/set\_text()
+
+We can use TextIterators to get a reference of a space between to chars, generaly words. But these
+changes anytime the text does. So we can peserve the position of those chars with a TextMark, this 
+mark is where the the cursor is located on the text or a selection of this. We can get the content 
+of these with get\_insert()/selection\_bound(). It isn't visible by default, but we can do it by using 
+set\_visible().
+
+We can get the starting Textiter and the last one by using get\_start/end\_iter().
+
+We can also add text on a specific text iter with insert(), or add text where the cursor is with insert\_at\_cursor().
+If we want to delete the space between to iters with delete().
+
+We can use a method to search on the text a match of a given text. It uses the start or end textiters, 
+using foward/barckward\_search()
+
+### TextTags
+
+We can use tags to change the text format on the space of two text\_iters, adding efects such as: 
+- background;
+- foreground
+- underline
+- bold
+- italics
+- striketrough
+- justification
+- size
+- text wrapping 
+
+Add them to a text buffer by using apply\_tag() & create\_tag(), and remove them with remove\_tag() or remove\_all\_tags()
+
+## Dialogs 
+
+Dialogs are a type of window, which behaves just like the main window. But are used for showing or getting info from/to 
+the user. Just like messages, yes or no dialogs, or choosing a file. WE can also create or own dialog to contain 
+anything, just like a normal window.
+
+### DIY Dialog
+
+We can create our own dialog by making a inherit from GTK.Dialog, this will take self, and the parent window.
+
+The window will only have a box layout, and it has to be accesed by using get\_content\_area(). There we can add 
+any widget. But if we want to use the btns of the right or left corner, we can use add\_button and 
+pass as arguments the btn, and then the response of the btn. 
+
+We can make our dialog to freeze or stop the rest of the windows, for a login as an example. by passing the 
+flag MODAL on the constructor or using set\_modal().
+
+We can also make our code wait until the dialog sends a response by getting the response of the dialog by 
+running the dialog with run(). Stoping the wait until the response is retruned.
+
+The dialog can be removed with hide(), which removes the dialog, but keeps it stored in memory if we need it 
+after. And destroy() which removes the dialog from the user view and memory, if we need it again it has to load 
+everything again.
+
+### Message Dialog
+
+This is a inherit of Dialog pre made to display simple messages with, or without, btns. Theres 
+different types of messages, warning, error, info, questions, etc. We can display a simple text, 
+a seccondary text if needed and icons. Most of the content will be passed in the constructor, but for the 
+secondary text we have to use format\_secondary\_text(), which will apear with a different style to the 
+main text.
+
+### FileChooser Dialog
+
+Can open files or folders, or save files with/out a different name. When the user sends the response 
+we can access the file or folder with get\_filename, or the uri with get\_uri. We can select multiple 
+files by using set\_select\_multiple(), and get their data by adding a s to the get methods from before.
+
+There's a buch of options to choose, such as:
+- set\_local\_only(): can only use local files
+- show\_hidden(): shows hidden files
+- set\_do\_overwrite\_confirmation(): send a confirmation dialog whenever the user saves a file that already exists.
+
+We can add filters with add\_filter() to the dialog to show only a type of the files.
+
+## Pop overs 
+
+Popovers are a way to display a semi dropmenu, or just simple information.
+We can add widgets to them by using add(), generaly layout widgets in order to 
+display more than one. They can be used by passing popover=the\_pop\_over as a karg 
+on the constructor of a menu btn.
+
+We can create popovers using XML tags in a string, using a builder to build it from the xml string, 
+and then pass the menu to the menubtn constructor as a menu\_model karg. Weird.
+
+## Clipboard
+
+We can create a clipboard instance to use and get the content of our clipboard. It works with text and 
+images. 
+- For text 
+	we can copy with set\_text(text, -1); wait or check if we have a current text copied with wait\_for\_text();
+	this wait will return the text to paste and use it.
+- For Images
+	copy with set\_image(pixbuf); wait & check wait\_for\_image(), wait will return the image to paste and use.
+We can see the type of storage of an element using get\_storage\_type()
+
+## Drag and Drop
+
+Drag and drop is a way to use some elements, generally icons from icon view. 
+These work with a source with elements to drag, and a destination where the elements are going to get draged.
+In the source widget we have to enable\_model\_drag\_source() and connect it to some events:
+- drag-begin: user stars drag
+- drag-data-get: pass data to the destination
+- drag-data-delete: delete the element on the source when the drag is done
+- drag-end: the drag ends.
+
+In the destination widget we have to drag\_dest\_set() and connect it to some events:
+- drag-motion: the source moves into the destination
+- drag-drop: the source is droped in the destination
+- drag-data-recived: the destination gets the data of the source
+
+Theres a bunch of details on the get and pass data of the elements, but i dont want to write them down.
+
+## Builder & Glade
+
+The GTK Builder is a way to make our proyect with GTK without writing almost any line of code, 
+by generating the stucture of the app by using a GTK XML template. In this templates we can add 
+the elements as tags with its properties, signals and others. We can also add them in a 
+child order. We can get the elements by adding them an id and using it in get\_object(id).
+
+We can add signals with the signals tag, and in these tags we have to add a handler 
+property, which is going to be the name of the function where we are going to handle the 
+event. 
+We can pass a dict with the key as the handler name, and the value as a function name in our code. 
+Or we can create a class with the handlers functions.
+Passing the handlers with connect\_signals()
+
+We can also use templates and use a decorator to use an class obj to a part of that template.
+Using this obj we can add the handlers with some decorators.
+
+## Objects
+
+The base of the GTK objects is the GObject.GObject. Where we can create our own object if we use as inheritance.
+We have to init with the \_\_init\_\_ GObject's method, on the \_\_init\_\_ of the class.
+
+We can add signals by adding them to the dict \_\_gsignals\_\_, where the key is the name of the 
+signal, the value is a tuple with the way to invoke a handler for the signal, the return of the signal handler, 
+and the args of the signal handler.
+We can emit this signals by using emit(name, \*args)
+
+We can add new properties by making them as a normal property with the GObject.Property class.
+They can have a type, default, flags for read write. We can make properties by using the 
+decorator @GObject.Property on a method, works just like the @property decorator, we can 
+make a readonly or with write.
+We can use the dict \_\_gproperties\_\_ to set the property data (type, nickname, blurb, min-val, max-val, default-val, flag)
+But the properties defined in this dict have to be handled in do\_get/set\_property(self, prop).
+We can see if a property is changed by connecting a signal to it, with notify::"property".
+
+## Aplication
+
+Aplications with GTK must e able to handle multiple instances, tasks and repetitive tasks.
+We can make an apliation with Gtk.Application. We have to pass on the super\_\_init\_\_ the args and kargs of
+the app, and then some of our own, such as:
+- app\_id
+- flags: for usage mostly
+
+We can state what can our app do with defining the actions with Gio.Actions. These can be turned on or off, 
+and are a nice way to include some actions menu to the desktop enviroment.
+
+Sincerly, i didn't understand anythind. I'll read the code. Semi understandment
+
+Actions and SimpleActions are the listed options on the window menu. 
+
+The best thing that i can do is read tbe gnome guide of how to do an app with GTK.
+
+### Aplication - GNOME How To Do
+
+An Aplication is the base of the Gtk Program, in order to separate it from main(). 
+This allows Gtk to only change and function when its needed. 
+
+Theres a bunch of functions that the app needs for some events: 
+- startup : app starts
+- shutdown : app closes
+- activate : normally launch the app
+- open : open a file with the app
+
+We need to avoid using main() on our code, if we need to init something we should use 
+startup and not anything else.
+
+Thats it.
